@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mist&Marble</title>
+</head>
+
+<body class="bg-fixed bg-cover text-white" style="background-image: url('./images/logo/mount2.jpeg')">
+    <!-- Navigation Menu -->
+    <div class="sm:mt-8 sm:p-8 p-8 ml-6">
+        <ul class="sm:flex sm:justify-between sm:items-center flex justify-between items-center">
+            <div>
+                <h1 class="sm:text-3xl sm:font-semibold text-xl">Mist<span class="text-sky-950">&</span>Marble</h1>
+            </div>
+            <span id="menu" class="text-3xl cursor-pointer md:hidden mx-2" onclick="toggleMenu(this)">
+                <i class="fa-solid fa-bars"></i>
+            </span>
+            <div id="nav-links" class="hidden md:flex md:items-center absolute md:static w-full md:w-auto transition-all ease-in duration-500 opacity-0 md:opacity-100">
+                <a href="./home.html" target="_blank" class="block font-bold text-base font-serif pr-14">Home</a>
+                <a href="./login.html" target="_blank" class="block font-bold text-base font-serif pr-14">About Us</a>
+                <a href="#" class="block font-bold text-base font-serif pr-14"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="block font-bold text-base font-serif pr-14"><i class="fa-solid fa-gift"></i></a>
+                <a href="#" class="block font-bold text-base font-serif pr-14"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </ul>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="h-screen flex items-center justify-center">
+        <div class="bg-black bg-opacity-60 backdrop-blur rounded-xl max-h-fit w-1/2">
+            <form onsubmit="signup(event)" class="m-5">
+                <h1 class="text-4xl text-center mb-7 font-semibold">Create Account</h1>
+
+                <div class="flex gap-2 mt-11">
+                    <div class="pl-4 border rounded-xl mb-3 w-1/2 flex items-center">
+                        <i class="fa-solid fa-signature"></i>
+                        <input class="bg-inherit outline-none py-2" id="name" type="text" placeholder="Your Name" required>
+                    </div> 
+                    <div class="pl-4 border rounded-xl mb-3 w-1/2 flex items-center">
+                        <i class="fa-solid fa-user"></i>
+                        <input class="bg-inherit outline-none py-2" id="username" type="text" placeholder="Username" required>
+                    </div>
+                </div>
+
+                <div class="pl-4 border rounded-xl mb-3">
+                    <i class="fa-solid fa-envelope-open"></i>
+                    <input class="bg-inherit outline-none py-2" id="email" type="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="pl-4 border rounded-xl mb-3">
+                    <i class="fa-solid fa-address-book"></i>
+                    <input class="bg-inherit outline-none py-2" id="contact" type="tel" placeholder="Contact" required>
+                </div>
+
+                <div class="flex gap-2 mt-11">
+                    <div class="pl-4 border rounded-xl mb-3 w-1/2 flex items-center">
+                        <i class="fa-solid fa-lock"></i>
+                        <input class="bg-inherit outline-none py-2" id="password" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="pl-4 border rounded-xl mb-3 w-1/2 flex items-center">
+                        <i class="fa-solid fa-lock"></i>
+                        <input class="bg-inherit outline-none py-2" id="confirm_pass" type="password" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+
+                <div class="flex justify-between text-xl">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="bg-gradient-to-r from-violet-600 to-blue-300 hover:from-pink-300 hover:to-orange-300 h-11 w-24 rounded-xl mt-2.5 text-2xl font-medium">Sign Up</button>
+                </div>
+                <div class="mt-2.5 text-xl">
+                    <p>Already have an account? <a href="login.html" class="text-violet-500 font-semibold">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        //hamburg menu
+        function toggleMenu(e) {
+            const menu = document.getElementById("nav-links");
+            menu.classList.toggle("hidden");
+            menu.classList.toggle("opacity-0");
+        }
+// local storage
+        function signup(event) {
+            event.preventDefault();
+            
+            const user = {
+                name: document.getElementById('name').value,
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                contact: document.getElementById('contact').value,
+                password: document.getElementById('password').value,
+                confirm_pass: document.getElementById('confirm_pass').value,
+            };
+
+            localStorage.setItem(user.username, JSON.stringify(user));
+            console.log('User added:', user);
+        }
+    </script>
+</body>
+</html>

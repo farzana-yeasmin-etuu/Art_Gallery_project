@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.4.0/esm/ionicons.min.js" integrity="sha512-heZj7rPbZHWyOEhE34vsJkzj2DKK2mZ9D3jjMkXQJ0uMGu/m5iOty+le26NL1eFZ5+qa4XBYcflwYwITwCWufw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Mist&Marble</title>
+</head>
+<body class=" bg-fixed ... bg-cover text-white " style="background-image: url(./images/logo/mount2.jpeg)  ">
+
+
+
+   
+
+    <!--nav-->
+    <div class="sm:mt-8 sm:p-8 p-8 ml-6">
+        <ul class="sm:flex sm:justify-between sm:items-center flex justify-between items-center">
+            <div>
+                <h1 class="sm:text-3xl sm:font-semibold text-xl">Mist<span class="text-sky-950">&</span>Marble</h1>
+            </div>
+            <span id="menu" class="text-3xl cursor-pointer md:hidden mx-2" onclick="toggleMenu(this)">
+                <i class="fa-solid fa-bars"></i>
+            </span>
+            <div id="nav-links" class="hidden md:flex md:items-center absolute md:static w-full md:w-auto transition-all ease-in duration-500 opacity-0 md:opacity-100">
+                <a href="./home.html" target="_blank" class="block font-bold text-base font-serif pr-14">Home</a>
+                <a href="./login.html" target="_blank" class="block font-bold text-base font-serif pr-14">About Us</a>
+                <a href="#" class="block font-bold text-base font-serif pr-14"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="block font-bold text-base font-serif pr-14"><i class="fa-solid fa-gift"></i></a>
+                <a href="#" class="block font-bold text-base font-serif pr-14"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </ul>
+    </div>
+            <!--nav end-->
+
+
+
+             <!--login-->
+
+
+
+   <div class="sm:h-screen sm:w-screen sm:flex sm:items-center sm:m-0 sm:pr-0  sm:justify-center h-[600px] w-[500px] flex items-center justify-center pr-12">
+    <div class="bg-black bg-opacity-50 backdrop-blur rounded-xl h-2/3 w-1/2"><form onsubmit="login()" action=""  class=" sm:m-14 m-2">
+        <h1 class=" sm:text-4xl sm:text-center sm:mb-5  font-[20px] sm:font-semibold text-2xl text-center mb-5 ">Sign In</h1>
+        <div>
+            <div class="sm:pl-4 sm:h-15 sm:w-[600px] h-[40px] w-[200px] border rounded-xl sm:mb-3 pl-2 m-0 flex justify-start items-center">
+                <i class="fa-solid fa-envelope-open"></i>
+                <label for=""><input class="bg-inherit outline-none py-2  "  type="text" placeholder="Email Address"   id="email"  required></label></div> <br>
+        </div>
+        <div>
+            <div></div>
+            <div class="sm:pl-4 sm:h-11 sm:w-[600px] h-[40px] w-[200px] border rounded-xl sm:mb-3 pl-2 m-0 flex justify-start items-center" >
+                <i class="fa-solid fa-lock"></i>
+                <input class="bg-inherit outline-none py-2  " type="Password" id="password" placeholder="Password" required></div> 
+        </div>
+        <div class="sm:flex sm:justify-between sm:text-xl  justify-between text-xl"> <label for=""><input type="checkbox" >Remember me</label>
+        <a href="#" class="text-violet-500 font-semibold">Forgot password?</a></div>
+
+        <div class="text-center"><button type="submit"  onClick="window.location.reload();" id="" class="bg-gradient-to-r from-violet-600 to-blue-300 hover:from-pink-00 hover:to-orange-100 h-11 w-24 rounded-xl mt-2.5 text-2xl font-medium">
+Login </button></div>
+
+        <div class="mt-2.5 text-xl sm:flex-row flex-col"><p>Don't have an account?
+            <a href="signup.html" class="text-violet-500 font-semibold">Sign Up</a></p></div>
+    </form></div>
+   </div>
+
+   <!--javascript-->
+   <script>
+//hamburg menu
+   //hamburg menu
+   function toggleMenu(e) {
+    const menu = document.getElementById("nav-links");
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("opacity-0");
+}
+
+/*
+    function menu(e)
+    {    let list = document.querySelector('ul');
+
+        e.id === 'menu' ? (e.id ="close" list.classList.add('top-[80px]') , list.classList.add('opacity-100') ) : ( e.id ="menu" , list.classList.remove('top-[-80px]') , list.classList.add('opacity-100') )
+    } */
+
+
+
+//login function
+function login(e){
+    event.preventDefault();
+    //console.log('working');
+
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    var user = {
+        email: email,
+        password: password,
+    };
+
+    var json = JSON.stringify(user);
+    localStorage.setItem(email, json);
+    console.log('user added')
+}
+
+   </script>
+</body>
+</html>
