@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="main.css">
     <title>Mist&Marble</title>
 </head>
 <body class="">
-    <!--nav-->
-    <div class="flex justify-center gap-6 flex-wrap sm:flex-nowrap">
+
+
+<!--nav-->
+
+
+
+
+
+
+
+
+<!--image slider-->
+
+
+<div class="slider ">
+
+       
+ 
+    <div class="pl-[180px] mt-5 flex justify-between sm:gap-[150px] flex-wrap sm:flex-nowrap z-40 absolute">
         <div> 
             <h1 class="text-2xl sm:text-3xl font-semibold mt-4">Mist<span class="text-sky-950">&</span>Marble </h1>
         </div>
-        <div class="pl-4 mt-4 h-11 w-full sm:w-5/12 border rounded-3xl flex items-center">
+        <div class="pl-4 mt-4 h-11 w-full sm:w-[400px] border border-slate-800 rounded-3xl flex items-center">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <label><input class="bg-inherit outline-none py-2 w-full" type="text" placeholder="Topic,Category,Artist.." required></label>
+            <label><input class="bg-inherit outline-none py-2 w-full text-black placeholder-black" type="text" placeholder="Topic,Category,Artist.." required></label>
         </div>
         <div class="flex items-center gap-6 mt-4 flex-wrap sm:flex-nowrap">
             <a target="_blank" class="block font-bold text-base font-serif pr-3 sm:pr-6" href="./signup.html">Sign Up</a>
@@ -26,14 +44,62 @@
         </div>
     </div>
 
-    <div class="flex justify-center pt-5 gap-4 sm:gap-10 font-medium text-xl text-slate-500 flex-wrap">
-      <p><a href="./paintings.html">Paintings</a></p>
-      <p><a href="./prints.html">Prints</a></p>
-      <p><a href="./Photgraphy.html">Photography</a></p>
-      <p><a href="./popart.html">PopArts</a></p>
-      <p><a href="./drawing.html">Drawings</a></p>
-      <p><a href="./textureart.html">TextureArts</a></p>
+   
+
+    <div class="sm:pl-[370px] flex justify-center pt-[120px] gap-[100px] sm:gap-10  text-2xl font-semibold text-gray-700 flex-wrap absolute z-40">
+        <p><a href="./paintings.html">Paintings</a></p>
+        <p><a href="./prints.html">Prints</a></p>
+        <p><a href="./Photgraphy.html">Photography</a></p>
+        <p><a href="./popart.html">PopArts</a></p>
+        <p><a href="./drawing.html">Drawings</a></p>
+        <p><a href="./textureart.html">TextureArts</a></p>
+      </div>
+
+
+
+
+
+
+    <div class="list z-30 ">
+        <div class="item">
+            <img  class="" src="img/bg-54.jpeg" alt="">
+        </div>
+        <div class="item">
+            <img class="blur" src="img/bg-23.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="img/bg-4.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="img/bg-6.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="img/bg-10.jpg" alt="">
+        </div>
     </div>
+    <div class="buttons z-40">
+        <button id="prev"><code><</code></button>
+        <button id="next">></button>
+    </div>
+    <ul class="dots absolute z-40">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+    
 
     <!-- main content start-->
     <div>
@@ -620,6 +686,40 @@
             isExpanded = !isExpanded;
             toggleButton2.textContent = isExpanded ? 'See Less' : 'See More';
         });
+
+
+
+        //slider image
+ let slider = document.querySelector('.slider .list');
+let items = document.querySelectorAll('.slider .list .item');
+let next = document.getElementById('next');
+let prev = document.getElementById('prev');
+let dots = document.querySelectorAll('.slider .dots li');
+
+let lengthItems = items.length - 1;
+let active = 0;
+next.onclick = function(){
+    active = active + 1 <= lengthItems ? active + 1 : 0;
+    reloadSlider();
+}
+prev.onclick = function(){
+    active = active - 1 >= 0 ? active - 1 : lengthItems;
+    reloadSlider();
+}
+let refreshInterval = setInterval(()=> {next.click()}, 3000);
+function reloadSlider(){
+    slider.style.left = -items[active].offsetLeft + 'px';
+    // 
+    let last_active_dot = document.querySelector('.slider .dots li.active');
+    last_active_dot.classList.remove('active');
+    dots[active].classList.add('active');
+
+    clearInterval(refreshInterval);
+    refreshInterval = setInterval(()=> {next.click()}, 3000);
+
+    
+}
+
 
 
 </script>
