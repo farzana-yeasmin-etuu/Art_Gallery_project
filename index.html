@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="main.css">
     <title>Mist&Marble</title>
 </head>
@@ -27,33 +30,64 @@
 
        
  
-    <div class="pl-[180px] mt-5 flex justify-between sm:gap-[150px] flex-wrap sm:flex-nowrap z-40 absolute">
+    <div class="pl-[140px] mt-5 flex justify-between sm:gap-[90px] flex-wrap sm:flex-nowrap z-40 absolute">
         <div> 
             <h1 class="text-2xl sm:text-3xl font-semibold mt-4">Mist<span class="text-sky-950">&</span>Marble </h1>
         </div>
-        <div class="pl-4 mt-4 h-11 w-full sm:w-[400px] border border-slate-800 rounded-3xl flex items-center">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <label><input class="bg-inherit outline-none py-2 w-full text-black placeholder-black" type="text" placeholder="Topic,Category,Artist.." required></label>
-        </div>
-        <div class="flex items-center gap-6 mt-4 flex-wrap sm:flex-nowrap">
-            <a target="_blank" class="block font-bold text-base font-serif pr-3 sm:pr-6" href="./signup.html">Sign Up</a>
-            <a class="block font-bold text-base font-serif pr-3 sm:pr-6" href="./login.html">Sign In</a>
-            <a class="block font-bold text-base font-serif pr-3 sm:pr-6" href=""><i class="fa-regular fa-heart"></i></a>
-            <a class="block font-bold text-base font-serif pr-3 sm:pr-6" href=""><i class="fa-solid fa-gift"></i></a>
-            <a class="block font-bold text-base font-serif pr-3 sm:pr-6" href=""><i class="fa-solid fa-cart-shopping"></i></a>
-        </div>
-    </div>
+       
 
-   
 
-    <div class="sm:pl-[370px] flex justify-center pt-[120px] gap-[100px] sm:gap-10  text-2xl font-semibold text-gray-700 flex-wrap absolute z-40">
+
+<!--search bar-->
+
+<div class="mt-4 h-11 w-full sm:w-[500px] border-2  border-slate-800 rounded-3xl z-50 relative">
+    <form class=" ml-2  flex justify-between items-center">
+        <input class="bg-inherit outline-none py-2 w-full text-black placeholder-black" type="text" placeholder="Topic,Category,Artist.." name="search">
+        <button class="pr-[10px]" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+
+    <div class="sm:pl[0px] flex justify-center pt-[50px] gap-[90px] sm:gap-10  text-2xl font-semibold text-gray-800  absolute z-40">
         <p><a href="./paintings.html">Paintings</a></p>
         <p><a href="./prints.html">Prints</a></p>
         <p><a href="./Photgraphy.html">Photography</a></p>
         <p><a href="./popart.html">PopArts</a></p>
         <p><a href="./drawing.html">Drawings</a></p>
-        <p><a href="./textureart.html">TextureArts</a></p>
+        <p><a href="./textureart.html">Texture</a></p>
       </div>
+
+
+
+
+      <div class="pl-[100px] sm:h-screen sm:w-screen sm: sm:items-center sm:m-0 sm:pr-0  sm:pt-[200px] h-[300px] w-[500px]  absolute z-40">
+
+        <div  class="bg-black bg-opacity-50 backdrop-blur rounded-xl h-[250px] w-[500px] pt-[50px] pl-[40px]"> 
+         <p class="text-yellow-100 text-2xl font-semibold pl-[40px]">Welcome to Mist & Marble!</p>
+         <p class="text-white text-xl  pt-[20px]">Explore the beauty and creativity that fills our gallery.</p>
+         <p class="text-white text-xl"> It's a pleasure to share this journey with you.</p>
+ </div>
+       </div>
+
+
+
+
+</div>
+
+        <div class="pl-[10px] flex items-center gap-6 mt-4 flex-wrap sm:flex-nowrap">
+            <a target="_blank" class="block font-bold text-xl font-serif pr-3 sm:pr-6" href="./signup.html">Sign Up</a>
+            <a class="block font-bold text-xl font-serif pr-3 sm:pr-6" href="./login.html">Sign In</a>
+            <a class="block font-bold text-xl font-serif pr-3 sm:pr-6" href=""><i class="fa-regular fa-heart"></i></a>
+            <a class="block font-bold text-xl font-serif pr-3 sm:pr-6" href=""><i class="fa-solid fa-gift"></i></a>
+            <a class="block font-bold text-xl font-serif pr-3 sm:pr-6" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+
+
+        
+
+
+    </div>
+
+   
 
 
 
@@ -720,6 +754,31 @@ function reloadSlider(){
     
 }
 
+
+//search button work
+document.querySelector('button[type="submit"]').addEventListener('click', function(event) {
+    // Prevent form submission to avoid page refresh
+    event.preventDefault();
+    
+    // Get search input value and convert it to lowercase
+    const searchTerm = document.querySelector('input[name="search"]').value.toLowerCase();
+
+    // Select all gallery items
+    const items = document.querySelectorAll('.image-item');
+
+    // Loop through each item and filter by title
+    items.forEach(item => {
+        // Find the title inside each gallery item
+        const title = item.querySelector('.font-semibold').textContent.toLowerCase();
+
+        // Check if the title includes the search term
+        if (title.includes(searchTerm)) {
+            item.style.display = 'block'; // Show item if it matches
+        } else {
+            item.style.display = 'none'; // Hide item if it doesn't match
+        }
+    });
+});
 
 
 </script>
