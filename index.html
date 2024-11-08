@@ -53,19 +53,19 @@
         <p><a href="./popart.html">PopArts</a></p>
         <p><a href="./drawing.html">Drawings</a></p>
         <p><a href="./textureart.html">Texture</a></p>
+
+
+       
+
+
+
+
       </div>
 
 
 
 
-      <div class="pl-[100px] sm:h-screen sm:w-screen sm: sm:items-center sm:m-0 sm:pr-0  sm:pt-[200px] h-[300px] w-[500px]  absolute z-40">
-
-        <div  class="bg-black bg-opacity-50 backdrop-blur rounded-xl h-[250px] w-[500px] pt-[50px] pl-[40px]"> 
-         <p class="text-yellow-100 text-2xl font-semibold pl-[40px]">Welcome to Mist & Marble!</p>
-         <p class="text-white text-xl  pt-[20px]">Explore the beauty and creativity that fills our gallery.</p>
-         <p class="text-white text-xl"> It's a pleasure to share this journey with you.</p>
- </div>
-       </div>
+     
 
 
 
@@ -156,7 +156,7 @@
             <div class=" ">
 
                 <div class="w-72 h-fit group">
-                 <div class="relative overflow-hidden mt-7 border rounded-xl h-[390px] w-fit bg-slate-200 shadow-slate-600 shadow-2xl image-item">
+                 <div class="relative overflow-hidden mt-7 border rounded-xl h-[390px] w-fit bg-slate-200 shadow-slate-600 shadow-2xl image-item tosearch">
                    <img class="h-80 w-[280px] rounded-xl object-cover" src="./images/Drawings/draw (8).jpg" alt="">
                    <div class="absolute h-full w-full bg-black/20 flex items-center justify-center gap-3 -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                      <a href="#" ><i class="fa-regular fa-heart"></i></a>
@@ -641,8 +641,8 @@
         <div class="text-center">
             <p class="uppercase text-xl font-semibold">Be In The Know</p>
             <div class="flex flex-col sm:flex-row items-center justify-center mt-4">
-                <input class="border-b-2 w-full sm:w-1/2 mb-4 sm:mb-0" type="text" placeholder="Email Address">
-                <button class="ml-0 sm:ml-4 w-full sm:w-1/6 border-4">Join</button>
+                <input class="border-b-2 w-full sm:w-1/2 mb-4 sm:mb-0" type="text" placeholder="Email Address" required>
+                <button class="ml-0 sm:ml-4 w-full sm:w-1/6 border-4"><a href="./welcome.html">Join</a></button>
             </div>
             <p class="text-xs mt-4 w-full sm:w-1/2 mx-auto">By giving us your email address you agree to receive (thrilling) email updates...</p>
         </div>
@@ -756,29 +756,25 @@ function reloadSlider(){
 
 
 //search button work
-document.querySelector('button[type="submit"]').addEventListener('click', function(event) {
-    // Prevent form submission to avoid page refresh
-    event.preventDefault();
-    
-    // Get search input value and convert it to lowercase
-    const searchTerm = document.querySelector('input[name="search"]').value.toLowerCase();
+const searchInput = document.querySelector('input[name="search"]');
+    searchInput.addEventListener('input', function() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const galleryItems = document.querySelectorAll('.image-item');
+        const galleryItems2 = document.querySelectorAll('.image-item2');
 
-    // Select all gallery items
-    const items = document.querySelectorAll('.image-item');
-
-    // Loop through each item and filter by title
-    items.forEach(item => {
-        // Find the title inside each gallery item
-        const title = item.querySelector('.font-semibold').textContent.toLowerCase();
-
-        // Check if the title includes the search term
-        if (title.includes(searchTerm)) {
-            item.style.display = 'block'; // Show item if it matches
-        } else {
-            item.style.display = 'none'; // Hide item if it doesn't match
-        }
+        galleryItems.forEach(item => {
+            const title = item.querySelector('.font-semibold').textContent.toLowerCase();
+            item.style.display = title.includes(searchTerm) ? 'block' : 'none';
+        });
     });
-});
+
+    // Reset display if the search input is cleared
+    searchInput.addEventListener('search', function() {
+        const galleryItems = document.querySelectorAll('.image-item');
+        galleryItems.forEach(item => item.style.display = 'block');
+        const galleryItems2 = document.querySelectorAll('.image-item2');
+        galleryItems2.forEach(item => item.style.display = 'block');
+    });
 
 
 </script>
