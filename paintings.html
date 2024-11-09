@@ -735,7 +735,7 @@ const searchInput = document.querySelector('input[name="search"]');
     searchInput.addEventListener('input', function() {
         const searchTerm = searchInput.value.toLowerCase();
         const galleryItems = document.querySelectorAll('.image-item');
-        const galleryItems2 = document.querySelectorAll('.image-item2');
+       
 
         galleryItems.forEach(item => {
             const title = item.querySelector('.font-semibold').textContent.toLowerCase();
@@ -747,8 +747,7 @@ const searchInput = document.querySelector('input[name="search"]');
     searchInput.addEventListener('search', function() {
         const galleryItems = document.querySelectorAll('.image-item');
         galleryItems.forEach(item => item.style.display = 'block');
-        const galleryItems2 = document.querySelectorAll('.image-item2');
-        galleryItems2.forEach(item => item.style.display = 'block');
+       
     });
     </script>
   </body>
